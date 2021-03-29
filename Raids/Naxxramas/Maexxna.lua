@@ -213,13 +213,11 @@ function module:EnrageEvent(msg)
 end
 
 function module:HealthEvent(msg)
-
     if UnitExists('target') then
         if UnitName('target') == 'Maexxna' and msg == 'target' then
             self:Sync(syncName.enragePercLeft .. " " .. 100 + 30 - UnitHealth('target'))
         end
     end
-
 end
 
 ------------------------------
