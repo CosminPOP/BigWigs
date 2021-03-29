@@ -146,7 +146,6 @@ Raids\Other\Lethon.lua
 Raids\Other\Taerar.lua
 Raids\Other\Ysondre.lua
 Raids\Other\Gordok.lua
-Raids\Other\Nerubian.lua
 
 Raids\Onyxia\Onyxia.lua
 
