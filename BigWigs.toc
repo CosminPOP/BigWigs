@@ -146,9 +146,11 @@ Raids\Other\Lethon.lua
 Raids\Other\Taerar.lua
 Raids\Other\Ysondre.lua
 Raids\Other\Gordok.lua
+# Raids\Other\Nerubian.lua
 
 Raids\Onyxia\Onyxia.lua
 
+Raids\Naxxramas\StoneskinGargoyle.lua
 Raids\Naxxramas\Anubrekhan.lua
 Raids\Naxxramas\Gluth.lua
 Raids\Naxxramas\Razuvious.lua
