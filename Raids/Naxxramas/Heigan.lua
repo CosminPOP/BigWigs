@@ -150,7 +150,22 @@ local syncName = {
 	toFloor = "HeiganToFloor"..module.revision,
 	disease = "HeiganDisease"..module.revision,
 }
+local eruption_count = 1
+local eruption_dir = 1
 
+function eruption_help(inp)
+	return '! Run to ' .. inp .. ' !'
+	--if inp == 1 then
+	--	return ' [  ] [X] [X] [X]'
+		--return '! Run to'
+	--elseif inp == 2 then
+	--	return ' [X] [  ] [X] [X]'
+	--elseif inp == 3 then
+	--	return ' [X] [X] [  ] [X]'
+	--else
+	--	return ' [X] [X] [X] [  ]'
+	--end
+end
 
 ------------------------------
 --      Initialization      --
@@ -188,8 +203,11 @@ function module:OnEngage()
 		self:Bar(L["dbar"], timer.firstDisease, icon.disease)
 	end
 	if self.db.profile.erruption then
+		eruption_count = 1
+		eruption_dir = 1
+
 		timer.erruption = timer.erruptionSlow
-		self:Bar(L["erruptionbar"], timer.firstErruption, icon.erruption)
+		self:Bar(L["erruptionbar"] .. eruption_help(eruption_count), timer.firstErruption, icon.erruption)
 		self:ScheduleEvent("HeiganErruption", self.Erruption, timer.firstErruption, self)
 	end
 end
@@ -228,18 +246,26 @@ end
 function module:Erruption()
 	if self.db.profile.erruption then
 		-- don't show bar before teleport
+		eruption_count = eruption_count + 1 * eruption_dir
+		if eruption_count == 4 then
+			eruption_dir = -1
+		end
+		if eruption_count == 1 then
+			eruption_dir = 1
+		end
+
 		local registered, time, elapsed = self:BarStatus(L["toPlatform_bar"])
 		if registered and timer and elapsed then
 			local remaining = time - elapsed
 			if timer.erruption + 1 < remaining then
-				self:Bar(L["erruptionbar"], timer.erruption, icon.erruption)
+				self:Bar(L["erruptionbar"] .. eruption_help(eruption_count), timer.erruption, icon.erruption)
 				self:ScheduleEvent("HeiganErruption", self.Erruption, timer.erruption, self)
 			else
 				self:Sound("Beware")
 				self:Bar(L["dancingshoes"], timer.dancing, icon.dancing)
 			end
 		else
-			self:Bar(L["erruptionbar"], timer.erruption, icon.erruption)
+			self:Bar(L["erruptionbar"] .. eruption_help(eruption_count), timer.erruption, icon.erruption)
 			self:ScheduleEvent("HeiganErruption", self.Erruption, timer.erruption, self)
 		end
 
@@ -287,8 +313,10 @@ function module:ToPlatform()
 	if self.db.profile.erruption then
 		self:CancelScheduledEvent("HeiganErruption")
 
+		eruption_count = 1
+
 		timer.erruption = timer.erruptionFast
-		self:Bar(L["erruptionbar"], timer.firstDanceErruption, icon.erruption)
+		self:Bar(L["erruptionbar"] .. eruption_help(eruption_count), timer.firstDanceErruption, icon.erruption)
 		self:ScheduleEvent("HeiganErruption", self.Erruption, timer.firstDanceErruption, self)
 	end
 	self:ScheduleEvent("bwHeiganToFloor",  self.ToFloor, timer.toFloor, self )
@@ -307,8 +335,10 @@ function module:ToFloor()
 	if self.db.profile.erruption then
 		self:CancelScheduledEvent("HeiganErruption")
 
+		eruption_count = 1
+
 		timer.erruption = timer.erruptionSlow
-		self:Bar(L["erruptionbar"], timer.erruption, icon.erruption)
+		self:Bar(L["erruptionbar"] .. eruption_help(eruption_count), timer.erruption, icon.erruption)
 		self:ScheduleEvent("HeiganErruption", self.Erruption, timer.erruption, self)
 	end
 end
