@@ -150,7 +150,7 @@ Raids\Other\Gordok.lua
 
 Raids\Onyxia\Onyxia.lua
 
-Raids\Naxxramas\StoneskinGargoyle.lua
+Raids\Naxxramas\Gargoyle.lua
 Raids\Naxxramas\Anubrekhan.lua
 Raids\Naxxramas\Gluth.lua
 Raids\Naxxramas\Razuvious.lua

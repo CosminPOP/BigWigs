@@ -368,8 +368,8 @@ BabbleBoss:RegisterTranslations("enUS", function()
 		["Stratholme Courier"] = true;
 		["Ancient Core Hound"] = true;
 		["Gurubashi Berserker"] = true;
-                ["Elder Mottled Boar"] = true,
-                ["Stoneskin Gargoyle"] = true,
+		["Elder Mottled Boar"] = true,
+		["Gargoyle"] = true,
 	}
 end)
 
@@ -589,9 +589,8 @@ BabbleBoss:RegisterTranslations("esES", function()
 		["Kurinnaxx"] = "Kurinnaxx",
 		["Ancient Core Hound"] = "Can del Núcleo",
 		["Gurubashi Berserker"] = "Rabioso Gurubashi",
-                ["Elder Mottled Boar"] = "Jabalí jaspeado mayor",
-                ["Stoneskin Gargoyle"] = "Gárgola piel de piedra",
-		
+		["Elder Mottled Boar"] = "Jabalí jaspeado mayor",
+		["Gargoyle"] = "Gárgola piel de piedra",
 		["Maur Grimtotem"] = "Maur Tótem Siniestro",
 		["Oggleflint"] = "Ogglesílex",
 		["Taragaman the Hungerer"] = "Taragaman el Hambriento",
@@ -716,8 +715,8 @@ BabbleBoss:RegisterTranslations("esES", function()
 		["Rethilgore"] = "Rethilgore";
 		["Atiesh"] = "Atiesh";
 		["Stratholme Courier"] = "Mensajero de Stratholme";
-                ["Elder Mottled Boar"] = "Jabalí jaspeado mayor",	
-                ["Stoneskin Gargoyle"] = "Gárgola piel de piedra",
+		["Elder Mottled Boar"] = "Jabalí jaspeado mayor",
+		["Gargoyle"] = "Gárgola piel de piedra",
 		["Shadowpriest Sezz'ziz"] = "Sacerdote oscuro Sezz'ziz",
 	}
 
@@ -1062,8 +1061,8 @@ BabbleBoss:RegisterTranslations("ruRU", function()
 		["Stratholme Courier"] = "Стратхольмский курьер";
 		["Ancient Core Hound"] = true;
 		["Gurubashi Berserker"] = true;
-                ["Elder Mottled Boar"] = true,
-                ["Stoneskin Gargoyle"] = true,
+		["Elder Mottled Boar"] = true,
+		["Gargoyle"] = true,
 	}
 end)
 
@@ -1289,8 +1288,8 @@ BabbleBoss:RegisterTranslations("deDE", function()
 		["Rend Blackhand"] = "Rend Blackhand",
 		["Ancient Core Hound"] = true;
 		["Gurubashi Berserker"] = true;
-                ["Stoneskin Gargoyle"] = "Steinhautgargoyle",
-                ["Elder Mottled Boar"] = "Alter scheckiger Eber",
+		["Gargoyle"] = "Steinhautgargoyle",
+		["Elder Mottled Boar"] = "Alter scheckiger Eber",
 	}
 end)
 
@@ -1503,7 +1502,7 @@ BabbleBoss:RegisterTranslations("frFR", function()
 		["Razorclaw the Butcher"] = "Tranchegriffe le Boucher",
 		["Wolf Master Nandos"] = "Ma\195\174tre-loup Nandos",
 		["Kurinnaxx"] = "Kurinnaxx",
-		["Stoneskin Gargoyle"] = true,
+		["Gargoyle"] = true,
 	}
 end)
 
@@ -1719,7 +1718,7 @@ BabbleBoss:RegisterTranslations("zhCN", function()
 		["Wolf Master Nandos"] = "狼王南杜斯", 
 		["Rend Blackhand"] = "雷德·黑手", 
 		["Kurinnaxx"] = "库林纳克斯",
-                ["Stoneskin Gargoyle"] = true,
+		["Gargoyle"] = true,
 	}
 end)
 
@@ -1934,15 +1933,14 @@ BabbleBoss:RegisterTranslations("zhTW", function()
 		["Wolf Master Nandos"] = "狼王南杜斯",
 		["Rend Blackhand"] = "大酋長雷德‧黑手",
 		["Kurinnaxx"] = "庫林納克斯",
-                
-                ["Stoneskin Gargoyle"] = true,
+		["Gargoyle"] = true,
 	}
 end)
 
 BabbleBoss:RegisterTranslations("koKR", function()
 	return {
 		["Nerubian Overseer"] = "Nerubian Overseer",
-		["Stoneskin Gargoyle"] = true,
+		["Gargoyle"] = true,
 		["Avalanchion"] = "아발란치온",
 		["The Windreaver"] = "칼날바람",
 		["Baron Charr"] = "남작 차르",
