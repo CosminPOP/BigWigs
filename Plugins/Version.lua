@@ -43,7 +43,7 @@ L:RegisterTranslations("enUS", function() return {
 	["Nr Replies"] = true,
 	["Ancient"] = true,
 
-	["Your version of Big Wigs Elysium is out of date!\nPlease visit https://github.com/Hosq/BigWigs to get the latest version."] = true,
+	["Your version of Big Wigs Turtle-WoW is out of date!\nPlease visit https://github.com/Hosq/BigWigs to get the latest version."] = true,
 	["Close"] = true,
 	["Cancel"] = true,
 
@@ -85,7 +85,7 @@ L:RegisterTranslations("esES", function() return {
 	["Nr Replies"] = "Nr repuesta",
 	["Ancient"] = "Anciano",
 
-	["Your version of Big Wigs Elysium is out of date!\nPlease visit https://github.com/Hosq/BigWigs to get the latest version."] = "¡Tu versión de Big Wigs es anticuada!\n Por favor visite https://github.com/Hosq/BigWigs para descargar la última versión.",
+	["Your version of Big Wigs Turtle-WoW is out of date!\nPlease visit https://github.com/Hosq/BigWigs to get the latest version."] = "¡Tu versión de Big Wigs es anticuada!\n Por favor visite https://github.com/Hosq/BigWigs para descargar la última versión.",
 	["Close"] = "Cerrar",
 	["Cancel"] = "Cancelar",
 
@@ -126,7 +126,7 @@ L:RegisterTranslations("deDE", function() return {
 	["Nr Replies"] = "Anzahl der Antworten",
 	["Ancient"] = "Alt",
 
-	["Your version of Big Wigs Elysium is out of date!\nPlease visit https://github.com/Hosq/BigWigs to get the latest version."] = "Deine Version von Big Wigs Elysium ist veraltet! Bitte downloade die neuste Version von https://github.com/Hosq/BigWigs",
+	["Your version of Big Wigs Turtle-WoW is out of date!\nPlease visit https://github.com/Hosq/BigWigs to get the latest version."] = "Deine Version von Big Wigs Turtle-WoW ist veraltet! Bitte downloade die neuste Version von https://github.com/Hosq/BigWigs",
 	["Close"] = "Schliessen",
 	["Cancel"] = "Abbrechen",
 } end )
@@ -293,12 +293,12 @@ end
 function BigWigsVersionQuery:IsOutOfDate()
 	if not self.OutOfDateShown then
 		self.OutOfDateShown = true
-		BigWigs:Print(L["Your version of Big Wigs Elysium is out of date!\nPlease visit https://github.com/Hosq/BigWigs to get the latest version."])
+		BigWigs:Print(L["Your version of Big Wigs Turtle-WoW is out of date!\nPlease visit https://github.com/Hosq/BigWigs to get the latest version."])
 
 		if self.db.profile.popup then
 			local dialog = nil
 			StaticPopupDialogs["BigWigsOutOfDateDialog"] = {
-				text = L["Your version of Big Wigs Elysium is out of date!\nPlease visit https://github.com/Hosq/BigWigs to get the latest version."],
+				text = L["Your version of Big Wigs Turtle-WoW is out of date!\nPlease visit https://github.com/Hosq/BigWigs to get the latest version."],
 				button1 = L["Close"],
 				button2 = L["Cancel"],
 				OnAccept = function()
