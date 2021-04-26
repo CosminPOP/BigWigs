@@ -54,7 +54,7 @@ L:RegisterTranslations("enUS", function() return {
 	toPlatform_bar = "Teleport!",
 	toFloor_bar = "Back on the floor!",
 	dbar = "Decrepit Fever",
-	erruptionbar = "Erruption",
+	erruptionbar = "Eruption",
 	dancingshoes = "Put on your dancing shoes!",
 
 	-- [[ Dream Room Mobs ]] --
@@ -154,17 +154,7 @@ local eruption_count = 1
 local eruption_dir = 1
 
 function eruption_help(inp)
-	return '! Run to ' .. inp .. ' !'
-	--if inp == 1 then
-	--	return ' [  ] [X] [X] [X]'
-		--return '! Run to'
-	--elseif inp == 2 then
-	--	return ' [X] [  ] [X] [X]'
-	--elseif inp == 3 then
-	--	return ' [X] [X] [  ] [X]'
-	--else
-	--	return ' [X] [X] [X] [  ]'
-	--end
+	return ' ! Run to ' .. inp .. ' !'
 end
 
 ------------------------------
