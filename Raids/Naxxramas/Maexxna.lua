@@ -17,9 +17,9 @@ L:RegisterTranslations("enUS", function()
         spray_name = "Web Spray Alert",
         spray_desc = "Warn for webspray and spiders",
 
-        enrage_cmd = "enrage",
-        enrage_name = "Enrage Alert",
-        enrage_desc = "Warn for enrage",
+        --enrage_cmd = "enrage",
+        --enrage_name = "Enrage Alert",
+        --enrage_desc = "Warn for enrage",
 
         cocoon_cmd = "cocoon",
         cocoon_name = "Cocoon Alert",
@@ -32,11 +32,11 @@ L:RegisterTranslations("enUS", function()
         cocoontrigger = "(.*) (.*) afflicted by Web Wrap.",
         webspraytrigger = "afflicted by Web Spray",
         poisontrigger = "afflicted by Necrotic Poison.",
-        etrigger1 = "gains Enrage",
+        --etrigger1 = "gains Enrage",
 
         cocoonwarn = "%s Cocooned!",
         poisonwarn = "Necrotic Poison!",
-        enragetrigger = "%s becomes enraged.",
+        --enragetrigger = "%s becomes enraged.",
 
         webspraywarn30sec = "Wall Cocoons in 10 seconds",
         webspraywarn20sec = "Wall Cocoons! 15 seconds until Spiders spawn!",
@@ -44,8 +44,8 @@ L:RegisterTranslations("enUS", function()
         webspraywarn5sec = "AOE - Spiders Spawn - AOE! WEB SPRAY 5 SECONDS!",
         webspraywarn = "Web Spray! 40 seconds until next!",
 
-        enragewarn = "Enrage - SQUISH SQUISH SQUISH!",
-        enragesoonwarn = "Enrage Soon - Bug Swatters out!",
+        --enragewarn = "Enrage - SQUISH SQUISH SQUISH!",
+        --enragesoonwarn = "Enrage Soon - Bug Swatters out!",
 
         webspraybar = "Web Spray",
         cocoonbar = "Cocoons",
@@ -66,8 +66,8 @@ L:RegisterTranslations("esES", function()
         spray_desc = "Avisa para Pulverizador de tela de araña",
 
         --enrage_cmd = "enrage",
-        enrage_name = "Alerta de Enfurecer",
-        enrage_desc = "Avisa para Enfurecer",
+        --enrage_name = "Alerta de Enfurecer",
+        --enrage_desc = "Avisa para Enfurecer",
 
         --cocoon_cmd = "cocoon",
         cocoon_name = "Alerta de Capullo",
@@ -84,7 +84,7 @@ L:RegisterTranslations("esES", function()
 
         cocoonwarn = "¡%s en Capullo!",
         poisonwarn = "¡Veneno necrótico!",
-        enragetrigger = "%s becomes enraged.",
+        --enragetrigger = "%s becomes enraged.",
 
         webspraywarn30sec = "Capullos al muro en 10 segundos",
         webspraywarn20sec = "¡Capullos al muro! 15 segundos hasta aparezcan las arañas!",
@@ -92,8 +92,8 @@ L:RegisterTranslations("esES", function()
         webspraywarn5sec = "¡AOE - Aparecen las arañas - AOE! PULVERIZADOR DE TELA DE ARAÑA 5 SEGUNDOS!",
         webspraywarn = "¡Pulverizador de tela de araña! 40 segundos hasta el próximo!",
 
-        enragewarn = "¡Enfurecer!",
-        enragesoonwarn = "¡Enfurecer pronto!",
+        --enragewarn = "¡Enfurecer!",
+        --enragesoonwarn = "¡Enfurecer pronto!",
 
         webspraybar = "Pulverizador de tela de araña",
         cocoonbar = "Capullos",
@@ -112,7 +112,7 @@ end)
 module.revision = 20011 -- To be overridden by the module!
 module.enabletrigger = module.translatedName -- string or table {boss, add1, add2}
 --module.wipemobs = { L["add_name"] } -- adds which will be considered in CheckForEngage
-module.toggleoptions = { "spray", "poison", "cocoon", "enrage", "bosskill" }
+module.toggleoptions = { "spray", "poison", "cocoon", "bosskill" }
 
 
 -- locals
@@ -128,18 +128,18 @@ local icon = {
     cocoon = "Spell_Nature_Web",
     poison = "Ability_Creature_Poison_03",
     webspray = "Ability_Ensnare",
-    enrage = "Spell_shadow_unholyfrenzy",
+    --enrage = "Spell_shadow_unholyfrenzy",
 }
 local syncName = {
     webspray = "MaexxnaWebspray" .. module.revision,
     poison = "MaexxnaPoison" .. module.revision,
     cocoon = "MaexxnaCocoon" .. module.revision,
-    enrage = "MaexxnaEnrage" .. module.revision,
-    enragePercLeft = "MaexxnaEnragePercLeft" .. module.revision,
+    --enrage = "MaexxnaEnrage" .. module.revision,
+    --enragePercLeft = "MaexxnaEnragePercLeft" .. module.revision,
 }
 
 local times = {}
-local enrageannounced = false
+--local enrageannounced = false
 
 ------------------------------
 --      Initialization      --
@@ -147,8 +147,8 @@ local enrageannounced = false
 
 -- called after module is enabled
 function module:OnEnable()
-    self:RegisterEvent("CHAT_MSG_SPELL_PERIODIC_CREATURE_BUFFS", "EnrageEvent")
-    self:RegisterEvent("UNIT_HEALTH", "HealthEvent")
+    --self:RegisterEvent("CHAT_MSG_SPELL_PERIODIC_CREATURE_BUFFS", "EnrageEvent")
+    --self:RegisterEvent("UNIT_HEALTH", "HealthEvent")
 
     self:RegisterEvent("CHAT_MSG_SPELL_PERIODIC_SELF_DAMAGE", "SprayEvent")
     self:RegisterEvent("CHAT_MSG_SPELL_PERIODIC_FRIENDLYPLAYER_DAMAGE", "SprayEvent")
@@ -159,13 +159,13 @@ function module:OnEnable()
     self:ThrottleSync(0, syncName.cocoon)
     -- the MaexxnaCocoon sync is left unthrottled, it's throttled inside the module itself
     -- because the web wrap happens to a lot of players at once.
-    self:ThrottleSync(1, syncName.enrage)
-    self:ThrottleSync(1, syncName.enragePercLeft)
+    --self:ThrottleSync(1, syncName.enrage)
+    --self:ThrottleSync(1, syncName.enragePercLeft)
 end
 
 -- called after module is enabled and after each wipe
 function module:OnSetup()
-    enrageannounced = false
+    --enrageannounced = false
     times = {}
 end
 
@@ -175,8 +175,8 @@ function module:OnEngage()
     self:Bar(L["poisonbar"], timer.firstPoison, icon.poison)
     self:Webspray()
 
-    self:TriggerEvent("BigWigs_StartHPBar", self, "% to Enrage", 100)
-    self:TriggerEvent("BigWigs_SetHPBar", self, "% to Enrage", 70)
+    --self:TriggerEvent("BigWigs_StartHPBar", self, "% to Enrage", 100)
+    --self:TriggerEvent("BigWigs_SetHPBar", self, "% to Enrage", 70)
 end
 
 -- called after boss is disengaged (wipe(retreat) or victory)
@@ -208,17 +208,17 @@ function module:SprayEvent(msg)
     end
 end
 
-function module:EnrageEvent(msg)
-    self:Sync(syncName.enrage)
-end
+--function module:EnrageEvent(msg)
+--    self:Sync(syncName.enrage)
+--end
 
-function module:HealthEvent(msg)
-    if UnitExists('target') then
-        if UnitName('target') == 'Maexxna' and msg == 'target' then
-            self:Sync(syncName.enragePercLeft .. " " .. 100 + 30 - UnitHealth('target'))
-        end
-    end
-end
+--function module:HealthEvent(msg)
+--    if UnitExists('target') then
+--        if UnitName('target') == 'Maexxna' and msg == 'target' then
+--            self:Sync(syncName.enragePercLeft .. " " .. 100 + 30 - UnitHealth('target'))
+--        end
+--    end
+--end
 
 ------------------------------
 --      Synchronization	    --
@@ -231,10 +231,10 @@ function module:BigWigs_RecvSync(sync, rest)
         self:Poison()
     elseif sync == syncName.cocoon and rest then
         self:Cocoon(rest)
-    elseif sync == syncName.enrage then
-        self:Enrage()
-    elseif sync == syncName.enragePercLeft and rest then
-        self:Health(tonumber(rest))
+    --elseif sync == syncName.enrage then
+    --    self:Enrage()
+    --elseif sync == syncName.enragePercLeft and rest then
+    --    self:Health(tonumber(rest))
     end
 end
 
@@ -277,18 +277,18 @@ function module:Cocoon(player)
     end
 end
 
-function module:Enrage()
-    self:Message("Maexxna becomes Enraged !", "Important")
-end
+--function module:Enrage()
+--    self:Message("Maexxna becomes Enraged !", "Important")
+--end
 
-function module:Health(perc)
-
-    self:TriggerEvent("BigWigs_SetHPBar", self, "% to Enrage", perc)
-
-    if perc == 40 then
-        self:Message("Enrage in 10% !", "Important")
-    end
-    if perc == 35 then
-        self:Message("Enrage in 5% !", "Important")
-    end
-end
+--function module:Health(perc)
+--
+--    self:TriggerEvent("BigWigs_SetHPBar", self, "% to Enrage", perc)
+--
+--    if perc == 40 then
+--        self:Message("Enrage in 10% !", "Important")
+--    end
+--    if perc == 35 then
+--        self:Message("Enrage in 5% !", "Important")
+--    end
+--end
