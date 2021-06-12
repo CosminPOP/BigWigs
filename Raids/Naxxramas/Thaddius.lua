@@ -445,8 +445,8 @@ function module:Throw()
 end
 
 function module:CheckAddHP()
-	local health1
-	local health2
+	local health1, maxhealth1
+	local health2, maxhealth2
 	if UnitName("playertarget") == L["add1"] then
 		health1 = UnitHealth("playertarget")
 	elseif UnitName("playertarget") == L["add2"] then
@@ -456,19 +456,21 @@ function module:CheckAddHP()
 	for i = 1, GetNumRaidMembers(), 1 do
 		if UnitName("Raid"..i.."target") == L["add1"] then
 			health1 = UnitHealth("Raid"..i.."target")
+			maxhealth1 = UnitHealthMax("Raid"..i.."target")
 		elseif UnitName("Raid"..i.."target") == L["add2"] then
 			health2 = UnitHealth("Raid"..i.."target")
+			maxhealth2 = UnitHealthMax("Raid"..i.."target")
 		end
 		if health1 and health2 then break; end
 	end
 
 	if health1 then
-		self.add1HP = health1
+		self.add1HP = health1 * 100 / maxhealth1
 		self:TriggerEvent("BigWigs_SetHPBar", self, L["add1"], 100-self.add1HP)
 	end
 
 	if health2 then
-		self.add2HP = health2
+		self.add2HP = health2 * 100 / maxhealth2
 		self:TriggerEvent("BigWigs_SetHPBar", self, L["add2"], 100-self.add2HP)
 	end
 end
