@@ -401,7 +401,7 @@ function module:Mark()
         SendChatMessage("HEALER [" .. globalMarks .. "] ROTATE", "RAID", DEFAULT_CHAT_FRAME.editBox.languageID);
     end
     if globalMarks == fhAlert.healerIndex then
-        fh_alert_marks("|cf75DE52f- ROTATE -")
+        fh_alert_marks("|cf75DE52f- MOVE -")
     end
 
     if globalMarks == 3 then
