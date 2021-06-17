@@ -32,6 +32,8 @@ local sounds = {
 	Murloc = "Sound\\Creature\\Murloc\\mMurlocAggroOld.wav",
 	Pain = "Sound\\Creature\\Thaddius\\THAD_NAXX_ELECT.wav",
 	Shakira = "Interface\\AddOns\\BigWigs\\Sounds\\Shakira.mp3",
+
+	BikeHorn = "Interface\\AddOns\\BigWigs\\Sounds\\BikeHorn.ogg",
 }
 
 
