@@ -343,7 +343,7 @@ function BigWigsVersionQuery:NotifyOldVersions()
 	end
 	SendChatMessage(L["People with outdated BigWigs:"],"RAID")
 	SendChatMessage(line,"RAID")
-	SendChatMessage(L["Download newest version from https://github.com/CosminPOP/BigWigs"], "RAID")
+	SendChatMessage("Download newest version from https://github.com/CosminPOP/BigWigs", "RAID")
 end
 
 function BigWigsVersionQuery:OnTooltipUpdate()

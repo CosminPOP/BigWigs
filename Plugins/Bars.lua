@@ -585,21 +585,24 @@ function BigWigsBars:BigWigs_StartBar(module, text, time, icon, otherc, c1, c2, 
         tinsert(barCache, { text, module })
     end
 
-    local function OnBarClick(id)
-        local exists, time, elapsed, running, paused = self:CandyBarStatus(id)
+    local function OnBarClick(i)
+        local exists, t, elapsed, running, paused = self:CandyBarStatus(i)
         if exists then
-            --            	BigWigs:TriggerEvent("BigWigs_Message", id .. " in " .. time .. "s", "Urgent", false, nil, true)
-            if (IsShiftKeyDown()) then
-                SendChatMessage(text .. " in " .. math.floor(time - elapsed) .. "s", "RAID_WARNING");
+            if IsShiftKeyDown() then
+                SendChatMessage(text .. " in " .. math.floor(t - elapsed) .. "s", "RAID_WARNING");
             else
-                SendChatMessage(text .. " in " .. math.floor(time - elapsed) .. "s", "RAID");
+                SendChatMessage(text .. " in " .. math.floor(t - elapsed) .. "s", "RAID");
             end
-            --id = id:gsub('BigWigsBar Test Bar', '')
-            --            print("exists : " .. id .. " in " .. math.floor(time - elapsed) .. "s");
         end
     end
 
-    self:SetCandyBarOnClick(id, OnBarClick, id)
+    if not BigWigsBarClick then
+        BigWigsBarClick = '1'
+    end
+
+    if BigWigsBarClick == '1' then
+        self:SetCandyBarOnClick(id, OnBarClick, id)
+    end
 end
 
 function BigWigsBars:BigWigs_StopBar(module, text)

@@ -19,7 +19,7 @@
 ## X-Embeds: Ace2, FuBarPlugin-2.0, Babble-2.2, CandyBar, CompostLib, DewdropLib, PaintChipsLib, TabletLib, SurfaceLib
 
 ## SavedVariables: BigWigsDB, BigWigsFubarDB, BigWigsCommonAurasDB, BigWigsZombieFoodDB, BigWigsRespawnTimersDB, BigWigsContributeFlag
-## SavedVariablesPerCharacter: BigWigsDBPerChar
+## SavedVariablesPerCharacter: BigWigsDBPerChar, BigWigsBarClick
 
 Libs\AceLibrary\AceLibrary.lua
 
@@ -146,7 +146,7 @@ Raids\Other\Lethon.lua
 Raids\Other\Taerar.lua
 Raids\Other\Ysondre.lua
 Raids\Other\Gordok.lua
-# Raids\Other\Nerubian.lua
+Raids\Other\Nerubian.lua
 
 Raids\Onyxia\Onyxia.lua
 

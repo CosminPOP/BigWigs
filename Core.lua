@@ -248,57 +248,6 @@ function BigWigs:DebugMessage(msg, module)
 	end
 end
 
-------------------------------
---      KLHThreatMeter      --
-------------------------------
-
-function BigWigs:KTM_Reset()
-	--if IsAddOnLoaded("KLHThreatMeter") then
-	--	if IsRaidLeader() or IsRaidOfficer() then
-	--		klhtm.net.clearraidthreat()
-	--	end
-	--end
-end
-
-BigWigs.masterTarget = nil;
-BigWigs.forceReset = nil;
-
-function BigWigs:KTM_ClearTarget(forceReset)
-	--if IsAddOnLoaded("KLHThreatMeter") and (IsRaidLeader() or IsRaidOfficer()) then
-	--	klhtm.net.clearmastertarget()
-	--	if forceReset then
-	--		self:KTM_Reset()
-	--	end
-	--end
-end
-
-function BigWigs:PLAYER_TARGET_CHANGED()
-	--not needed anymore
-	--if IsAddOnLoaded("KLHThreatMeter") and BigWigs.masterTarget and (IsRaidLeader() or IsRaidOfficer()) then
-	--	if klhtm.target.targetismaster(BigWigs.masterTarget) then
-	--		-- the masterTarget was already setup correctly
-	--		BigWigs:UnregisterEvent("PLAYER_TARGET_CHANGED")
-	--		BigWigs.masterTarget   	= nil
-	--		BigWigs.forceReset		= nil
-	--		return
-	--	end
-	--
-	--	if UnitName("target") == BigWigs.masterTarget then
-	--		-- our new target is the wanted target, setup masterTarget now
-	--		klhtm.net.sendmessage("target " .. BigWigs.masterTarget)
-	--		if BigWigs.forceReset then
-	--			BigWigs:KTM_Reset()
-	--			BigWigs.forceReset = nil
-	--		end
-	--		BigWigs.masterTarget   = nil
-	--		BigWigs:UnregisterEvent("PLAYER_TARGET_CHANGED")
-	--	end
-	--else
-	--	BigWigs:UnregisterEvent("PLAYER_TARGET_CHANGED")
-	--end
-end
-
-
 --------------------------------
 --      Module Prototype      --
 --------------------------------
@@ -366,8 +315,6 @@ function BigWigs.modulePrototype:Engage()
 		self.engaged = true
 		self:Message(string.format(L["%s engaged!"], self.translatedName), "Positive")
 		BigWigsBossRecords:StartBossfight(self)
-		--self:KTM_SetTarget(self:ToString())
-
 		self:OnEngage()
 	end
 end
@@ -377,8 +324,6 @@ function BigWigs.modulePrototype:Disengage()
 		self.started = false
 
 		self:CancelAllScheduledEvents()
-
-		--self:KTM_ClearTarget()
 
 		BigWigsAutoReply:EndBossfight()
 
@@ -396,7 +341,7 @@ function BigWigs.modulePrototype:Victory()
 	if self.engaged then
 		if self.db.profile.bosskill then
 			self:Message(string.format(L["%s has been defeated"], self.translatedName), "Bosskill", nil, "Victory")
-			Screenshot()
+			--Screenshot()
 		end
 
 		BigWigsBossRecords:EndBossfight(self)
@@ -698,37 +643,6 @@ end
 function BigWigs.modulePrototype:RemoveProximity()
 	BigWigs:RemoveProximity()
 end
-
--- doused runes
-
--- KLHThreatMeter
-function BigWigs.modulePrototype:KTM_Reset()
-	--BigWigs:KTM_Reset()
-end
-function BigWigs.modulePrototype:KTM_ClearTarget(forceReset)
-	--BigWigs:KTM_ClearTarget(forceReset)
-end
-function BigWigs.modulePrototype:KTM_SetTarget(targetName, forceReset)
-	--if IsAddOnLoaded("KLHThreatMeter") then
-	--	if targetName and type(targetName) == "string" and (IsRaidLeader() or IsRaidOfficer()) then
-	--		if UnitName("target") == targetName then
-	--			if not klhtm.target.targetismaster(targetName) then
-	--				klhtm.net.sendmessage("target " .. targetName)
-	--			end
-	--			if forceReset then
-	--				self:KTM_Reset()
-	--			end
-	--		else
-	--			-- we need to delay the setting mastertarget, as KTM only allows it to work if the person
-	--			-- calling the mastertarget sync has the unit as target
-	--			BigWigs:RegisterEvent("PLAYER_TARGET_CHANGED")
-	--			BigWigs.masterTarget    = targetName
-	--			BigWigs.forceReset      = forceReset
-	--		end
-	--	end
-	--end
-end
-
 
 ------------------------------
 --      Initialization      --
