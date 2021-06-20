@@ -373,7 +373,6 @@ end
 
 function module:BigWigs_RecvSync(sync, rest, nick)
 	if sync == syncName.phase2 then
-		self:KTM_Reset()
 		if self.db.profile.phase then
 			self:Message(L["phase2_message"], "Attention")
 		end

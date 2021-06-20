@@ -284,7 +284,6 @@ end
 
 function module:Blink()
 	firstblink = false
-	--self:KTM_Reset()
 
 	if self.db.profile.blink then
 		self:Message(L["blink_warn"], "Important")

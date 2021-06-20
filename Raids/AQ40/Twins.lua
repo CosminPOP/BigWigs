@@ -366,7 +366,6 @@ function module:Teleport()
 
 		--self:DelayedSync(timer.teleport, syncName.teleport_old)
 		--self:DelayedSync(timer.teleport, syncName.teleport)
-		self:KTM_Reset()
 
 		self:DelayedSound(timer.earliestTeleport - 10, "Ten")
 		self:DelayedSound(timer.earliestTeleport - 3, "Three")

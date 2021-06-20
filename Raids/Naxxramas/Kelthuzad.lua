@@ -389,7 +389,7 @@ function module:OnEngage()
 		self:Bar(string.format(L["add_bar"], numAbominations, "Unstoppable Abomination"), timer.phase1, icon.abomination)
 		self:Bar(string.format(L["add_bar"], numWeavers, "Soul Weaver"), timer.phase1, icon.soulWeaver)
 	end
-	self:KTM_SetTarget("Unstoppable Abomination")
+
 end
 
 -- called after boss is disengaged (wipe(retreat) or victory)
@@ -590,8 +590,6 @@ function module:Phase2()
 	end
 
 	-- master target should be automatically set, as soon as a raid assistant targets kel'thuzad
-	self:KTM_SetTarget(self:ToString())
-	self:KTM_Reset()
 
 	-- proximity silent
 	if self.db.profile.proximity then
@@ -625,7 +623,7 @@ function module:MindControl()
 		self:Message(L["mc_warning"], "Urgent")
 		self:IntervalBar(L["mc_bar"], timer.mindcontrol[1], timer.mindcontrol[2], icon.mindcontrol)
 	end
-	self:KTM_Reset()
+
 end
 
 function module:FrostBlast(name)
@@ -687,7 +685,6 @@ function module:AbominationDies(name)
 			self:Bar(string.format(L["add_bar"], numAbominations, name), (timePhase1Start + timer.phase1 - GetTime()), icon.abomination)
 		end
 	end
-	self:KTM_Reset()
 end
 
 function module:WeaverDies(name)

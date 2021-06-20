@@ -456,7 +456,6 @@ end
 function module:BigWigs_RecvSync(sync, rest, nick)
 	if sync == "JeklikPhaseTwo" and self.phase < 2 then
 		self.phase = 2
-		self:KTM_Reset()
 		if self.db.profile.phase then
 			self:Message(L["phasetwo_message"], "Attention")
 		end

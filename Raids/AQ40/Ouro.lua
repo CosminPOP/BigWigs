@@ -241,7 +241,7 @@ end
 
 -- called after boss is engaged
 function module:OnEngage()
-	self:KTM_SetTarget(self:ToString())
+
 	self.phase = "emerged"
 	self:ScheduleEvent("bwourosubmergecheck", self.DoSubmergeCheck, 5, self)
 
@@ -398,7 +398,6 @@ function module:Submerge()
 	self:RemoveBar(L["possible_submerge_bar"])
 
 	self.phase = "submerged"
-	self:KTM_Reset()
 
 	if self.db.profile.submerge then
 		self:Message(L["submergeannounce"], "Important")

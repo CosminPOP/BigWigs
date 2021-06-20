@@ -326,7 +326,6 @@ function module:Phase3()
 		self:Message(L["phase3text"], "Important", true, "Beware")
 		self:Bar(L["fear_next"], timer.firstFear + timer.fearCast, icon.fear)
 		phase = 3
-		self:KTM_Reset()
 	end
 end
 

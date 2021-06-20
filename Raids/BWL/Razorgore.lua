@@ -549,8 +549,6 @@ function module:BigWigs_RecvSync(sync, rest, nick)
 		self:Bar(L["volley_bar"], timer.firstVolley-self.freetime, icon.volley, true, "blue")
 		self:Bar(L["warstomp_bar"], timer.firstWarStomp-self.freetime, "Ability_BullRush")
 
-		self:KTM_SetTarget(self.translatedName)
-		self:KTM_Reset()
 	end
 end
 

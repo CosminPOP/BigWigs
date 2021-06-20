@@ -109,7 +109,7 @@ end
 
 -- called after boss is engaged
 function module:OnEngage()
-	self:KTM_SetTarget(self:ToString())
+
 end
 
 -- called after boss is disengaged (wipe(retreat) or victory)

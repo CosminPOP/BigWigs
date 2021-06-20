@@ -545,12 +545,6 @@ function module:Landing()
 		self:DelayedIntervalBar(timer.landing, L["fear_bar"], timer.earliestFear, timer.latestFear, icon.fear)
 		self:DelayedBar(timer.landing, L["curse_bar"], timer.firstCurse, icon.curse)
 
-		-- set ktm
-		local function setKTM()
-			self:KTM_SetTarget(self:ToString())
-			self:KTM_Reset()
-		end
-		self:ScheduleEvent("bwnefarianktm", setKTM, timer.landing + 1, self)
 	end
 end
 

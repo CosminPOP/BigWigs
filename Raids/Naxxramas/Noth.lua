@@ -350,7 +350,6 @@ function module:TeleportToRoom()
 
 	self:ScheduleEvent("bwnothtobalcony", self.TeleportToBalcony, timer.room, self)
 
-	self:KTM_Reset()
 end
 
 
@@ -394,8 +393,6 @@ function module:Blink()
 		self:IntervalBar(L["blinkbar"], timer.regularBlink[1], timer.regularBlink[2], icon.blink)
 	end
 
-	-- aggro reset?
-	self:KTM_Reset()
 end
 
 function module:FirstWarriorWave()

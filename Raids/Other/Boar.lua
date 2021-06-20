@@ -226,8 +226,6 @@ function module:Teleport()
 
 	self:CancelDelayedSync(syncName.teleport)
 	self:DelayedSync(timer.teleport, syncName.teleport)
-
-	self:KTM_Reset()
 end
 
 
