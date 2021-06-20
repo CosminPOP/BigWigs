@@ -464,12 +464,12 @@ function module:CheckAddHP()
 		if health1 and health2 then break; end
 	end
 
-	if health1 then
+	if health1 and maxhealth1 then
 		self.add1HP = health1 * 100 / maxhealth1
 		self:TriggerEvent("BigWigs_SetHPBar", self, L["add1"], 100-self.add1HP)
 	end
 
-	if health2 then
+	if health2 and maxhealth2 then
 		self.add2HP = health2 * 100 / maxhealth2
 		self:TriggerEvent("BigWigs_SetHPBar", self, L["add2"], 100-self.add2HP)
 	end
