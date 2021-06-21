@@ -578,8 +578,6 @@ function BigWigsIgnite:Update()
 	Threat: 99% (5s)
 	]]
 
-	self:UpdateThreat(self.owner)
-
 	local text = ""
 	text = L["Stacks"] .. ": " .. self.stacks .."\n"
 	text = text .. L["Damage"] .. ": " .. self.damage .."\n"
@@ -601,50 +599,6 @@ function BigWigsIgnite:Update()
 	end
 	local function green(t)
 		return "|cff00ff00" .. t .. "|r"
-	end
-end
-
-function BigWigsIgnite:UpdateThreat(name)
-	if self.owner and UnitExists("targettarget") and UnitIsPlayer("targettarget") and IsAddOnLoaded("KLHThreatMeter") then
-		local name = self.owner
-		local threat = nil
-		local tankThreat = nil
-		local tankName = UnitName("targettarget") -- get tank name
-
-		local data, playerCount, threat100 = KLHTM_GetRaidData()
-		for i = 1, table.getn(data) do
-			if tankName == data[i].name then
-				tankThreat = data[i].threat
-			elseif name == data[i].name then
-				threat = data[i].threat
-			end
-
-			if threat and tankThreat then
-				break
-			end
-		end
-
-		-- calculate how long it would take to draw aggro with the current ignite
-		if threat and tankThreat then
-			self.threat = threat / tankThreat * 100
-			self.threat = tonumber(string.format("%.0f", self.threat))
-			self.threatString = self.threat .. "%"
-
-			if self.damage then
-				local difference = tankThreat - threat
-				self.seconds = difference / (self.damage / 2 * 0.7)
-				self.seconds = tonumber(string.format("%.0f", self.seconds))
-				self.seconds = "(" .. self.seconds .. "s)"
-			end
-		else
-			self.threat = 0
-			self.threatString = L["n/a"]
-			self.seconds = nil
-		end
-	else
-		self.threat = 0
-		self.threatString = L["n/a"]
-		self.seconds = nil
 	end
 end
 
