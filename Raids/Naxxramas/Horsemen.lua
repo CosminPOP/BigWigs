@@ -402,10 +402,13 @@ function module:Mark()
     end
     if globalMarks == fhAlert.healerIndex then
         fh_alert_marks("|cf75DE52f- MOVE -")
+        self:TriggerEvent("BigWigs_Sound", "BikeHorn")
     end
 
     if globalMarks == 3 then
-        self:TriggerEvent("BigWigs_Sound", "BikeHorn")
+        if fhAlert.healerIndex == 0 then
+            self:TriggerEvent("BigWigs_Sound", "BikeHorn")
+        end
         globalMarks = 0
     end
 
@@ -563,4 +566,106 @@ function string:split(delimiter)
     end
     table.insert(result, string.sub(self, from))
     return result
+end
+
+
+-- tests
+-- /run local m=BigWigs:GetModule("The Four Horsemen");m:Test()
+function module:Test()
+
+    local function mark()
+        BigWigs:Print("module Test mark()")
+        self:Sync(syncName.mark)
+    end
+
+    local function deactivate()
+        BigWigs:Print("deactivate")
+        self:Disable()
+    end
+
+    local time = 0
+    -- immitate CheckForEngage + mark1
+    self:SendEngageSync()
+    BigWigs:Print("module Test started")
+
+    --mark2
+    time = time + timer.firstMark -- 20
+    self:ScheduleEvent(self:ToString().."Test_mark2", mark, time, self)
+    BigWigs:Print("module Test schedule mark(2) @ " .. time)
+
+    --mark3
+    time = time + timer.mark -- 32
+    self:ScheduleEvent(self:ToString().."Test_mark3", mark, time, self)
+    BigWigs:Print("module Test schedule mark(3) @ " .. time)
+
+    --mark4
+    time = time + timer.mark -- 44
+    self:ScheduleEvent(self:ToString().."Test_mark4", mark, time, self)
+    BigWigs:Print("module Test schedule mark(4) @ " .. time)
+
+    --mark5
+    time = time + timer.mark --56
+    self:ScheduleEvent(self:ToString().."Test_mark5", mark, time, self)
+    BigWigs:Print("module Test schedule mark(5) @ " .. time)
+
+    --mark6
+    time = time + timer.mark -- 68
+    self:ScheduleEvent(self:ToString().."Test_mark6", mark, time, self)
+    BigWigs:Print("module Test schedule mark(6) @ " .. time)
+
+    --mark7
+    time = time + timer.mark -- 80
+    self:ScheduleEvent(self:ToString().."Test_mark7", mark, time, self)
+    BigWigs:Print("module Test schedule mark(7) @ " .. time)
+
+    --mark8
+    time = time + timer.mark -- 92
+    self:ScheduleEvent(self:ToString().."Test_mark8", mark, time, self)
+    BigWigs:Print("module Test schedule mark(8) @ " .. time)
+
+    --mark9
+    time = time + timer.mark -- 104
+    self:ScheduleEvent(self:ToString().."Test_mark9", mark, time, self)
+    BigWigs:Print("module Test schedule mark(9) @ " .. time)
+
+    --mark10
+    time = time + timer.mark -- 116
+    self:ScheduleEvent(self:ToString().."Test_mark10", mark, time, self)
+    BigWigs:Print("module Test schedule mark(10) @ " .. time)
+
+    --mark11
+    time = time + timer.mark -- 128
+    self:ScheduleEvent(self:ToString().."Test_mark11", mark, time, self)
+    BigWigs:Print("module Test schedule mark(11) @ " .. time)
+
+    --mark12
+    time = time + timer.mark -- 140
+    self:ScheduleEvent(self:ToString().."Test_mark12", mark, time, self)
+    BigWigs:Print("module Test schedule mark(12) @ " .. time)
+
+    --mark13
+    time = time + timer.mark -- 152
+    self:ScheduleEvent(self:ToString().."Test_mark13", mark, time, self)
+    BigWigs:Print("module Test schedule mark(13) @ " .. time)
+
+    --mark14
+    time = time + timer.mark -- 164
+    self:ScheduleEvent(self:ToString().."Test_mark14", mark, time, self)
+    BigWigs:Print("module Test schedule mark(14) @ " .. time)
+
+    --mark15
+    time = time + timer.mark -- 176
+    self:ScheduleEvent(self:ToString().."Test_mark15", mark, time, self)
+    BigWigs:Print("module Test schedule mark(15) @ " .. time)
+
+    --mark16
+    time = time + timer.mark -- 188
+    self:ScheduleEvent(self:ToString().."Test_mark16", mark, time, self)
+    BigWigs:Print("module Test schedule mark(16) @ " .. time)
+
+
+    -- reset after 4m
+    time = 240
+    BigWigs:Print(" deactivate after " .. time)
+    self:ScheduleEvent(self:ToString().."Test_deactivate", deactivate, time, self)
 end
