@@ -34,6 +34,7 @@ local sounds = {
 	Shakira = "Interface\\AddOns\\BigWigs\\Sounds\\Shakira.mp3",
 
 	BikeHorn = "Interface\\AddOns\\BigWigs\\Sounds\\BikeHorn.ogg",
+	AirHorn = "Interface\\AddOns\\BigWigs\\Sounds\\custom2\\AirHorn.ogg",
 }
 
 
