@@ -437,6 +437,20 @@ function BigWigsVersionQuery:QueryVersion(zone)
 
 	self.responseTable = {}
 
+	if GetNumRaidMembers() > 0 then
+		for i = 0, GetNumRaidMembers() do
+			if GetRaidRosterInfo(i) then
+				local n, _, _, _, _, _, z = GetRaidRosterInfo(i);
+
+				if z == 'Offline' then
+					self.responseTable[n] = -2
+				else
+					self.responseTable[n] = 0
+				end
+			end
+		end
+	end
+
 	if not self.zoneRevisions then self:PopulateRevisions() end
 	if not self.zoneRevisions[zone] then
 		self.responseTable[UnitName("player")] = -1
