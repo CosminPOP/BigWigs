@@ -143,10 +143,6 @@ local icon = {
 	deathknight = "INV_Boots_Plate_08",
 	rider = "Spell_Shadow_DeathPact",
 }
-local syncName = {
-	--teleport = "TwinsTeleport"..module.revision,
-	--berserk = "TestbossBerserk"..module.revision
-	}
 
 local wave = 0
 local numTrainees = 0
@@ -233,18 +229,6 @@ function module:StopRoom()
 	self:CancelDelayedMessage(L["warn_inroom_30"])
 	self:CancelDelayedMessage(L["warn_inroom_10"])
 
-	--if numTrainees and numDeathknights and numRiders then
-	--	self:RemoveBar(string.format(L["trabar"], numTrainees - 1)) -- disabled for custom cancel
-	--	self:RemoveBar(string.format(L["dkbar"], numDeathknights - 1)) -- too
-	--	self:RemoveBar(string.format(L["riderbar"], numRiders - 1)) -- too
-	--end
-	--self:CancelScheduledEvent("bwgothiktrawarn")
-	--self:CancelScheduledEvent("bwgothikdkwarn")
-	--self:CancelScheduledEvent("bwgothikriderwarn")
-	--self:CancelScheduledEvent("bwgothiktrarepop")
-	--self:CancelScheduledEvent("bwgothikdkrepop")
-	--self:CancelScheduledEvent("bwgothikriderrepop")
-
 	wave = 0
 	numTrainees = 0
 	numDeathknights = 0
@@ -286,6 +270,35 @@ function module:Trainee()
 
 end
 
+local shackles = {}
+for i = 1, 8 do
+	shackles[i] = ''
+end
+SLASH_GOT1 = "/got"
+SlashCmdList["GOT"] = function(cmd)
+	if cmd then
+		if string.sub(cmd, 1, 3) == 'set' then
+			local ex = __explode(cmd, ' ')
+
+			if ex[1] and ex[2] and ex[3] then
+				if tonumber(ex[2]) then
+					shackles[tonumber(ex[2])] = ex[3]
+					DEFAULT_CHAT_FRAME:AddMessage('Gothik set shackle ' .. ex[2] .. ' to ' .. ex[3])
+				else
+					DEFAULT_CHAT_FRAME:AddMessage('Syntax: /got set # Name')
+				end
+			else
+				DEFAULT_CHAT_FRAME:AddMessage('Syntax: /got set # Name')
+			end
+		end
+		if string.sub(cmd, 1, 4) == 'list' then
+			for i = 1, 8 do
+				DEFAULT_CHAT_FRAME:AddMessage('Shackle ' .. i .. ' = ' .. shackles[i])
+			end
+		end
+	end
+end
+
 function module:DeathKnight()
 	numDeathknights = numDeathknights + 1
 	local deathknightTime = timer.deathknight
@@ -294,7 +307,7 @@ function module:DeathKnight()
 	end
 
 	if self.db.profile.add then
-		self:Bar(string.format(L["dkbar"], numDeathknights), deathknightTime, icon.deathknight)
+		self:Bar(string.format(L["dkbar"], numDeathknights) .. " " .. shackles[numDeathknights], deathknightTime, icon.deathknight)
 	end
 	self:ScheduleEvent("bwgothikdkwarn", self.WaveWarn, deathknightTime - 3, self, L["dkwarn"], L, "Urgent")
 	self:ScheduleRepeatingEvent("bwgothikdkrepop", self.DeathKnight, deathknightTime, self)
