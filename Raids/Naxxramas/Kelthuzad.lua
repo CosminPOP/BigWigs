@@ -278,12 +278,12 @@ module.proximitySilent = true
 local timer = {
 	phase1 = 320,
 	firstFrostboltVolley = 30,
-	frostboltVolley = {15,30},
+	frostboltVolley = {15,45},
 	frostbolt = 2,
 	phase2 = 15,
 	firstDetonate = 20,
 	detonate = 5,
-	nextDetonate = {20,25},
+	nextDetonate = {20,30},
 	firstFrostblast = 50,
 	frostblast = {30,60},
 	firstMindcontrol = 60,
@@ -525,6 +525,8 @@ function module:Event(msg)
 			or string.find(msg, L["pummel_trigger1"]) or string.find(msg, L["pummel_trigger2"]) or string.find(msg, L["pummel_trigger3"]) -- pummeled
 			or string.find(msg, L["shieldbash_trigger1"]) or string.find(msg, L["shieldbash_trigger2"]) or string.find(msg, L["shieldbash_trigger3"]) -- shield bashed
 			or string.find(msg, L["earthshock_trigger1"]) or string.find(msg, L["earthshock_trigger2"]) then -- earth shocked
+
+			--SendChatMessage(UnitName('player') .. " Interrupted !", "SAY")
 
 			self:RemoveBar(L["frostbolt_bar"])
 			frostbolttime = 0
