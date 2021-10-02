@@ -341,3 +341,17 @@ function module:Rider()
 		numRiders = 0
 	end
 end
+
+
+function __explode(str, delimiter)
+	local result = {}
+	local from = 1
+	local delim_from, delim_to = __find(str, delimiter, from, 1, true)
+	while delim_from do
+		__tinsert(result, __substr(str, from, delim_from - 1))
+		from = delim_to + 1
+		delim_from, delim_to = __find(str, delimiter, from, true)
+	end
+	__tinsert(result, __substr(str, from))
+	return result
+end
