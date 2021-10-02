@@ -1,4 +1,8 @@
 
+local __find = string.find
+local __substr = string.sub
+local __tinsert = table.insert
+
 ----------------------------------
 --      Module Declaration      --
 ----------------------------------
