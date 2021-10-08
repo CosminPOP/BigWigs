@@ -671,11 +671,11 @@ end
 function module:CheckTentacleHP()
 	local health
 	if UnitName("playertarget") == fleshtentacle then
-		health = UnitHealth("playertarget")
+		health = math.floor(UnitHealth("playertarget")/UnitHealthMax("playertarget")*100)
 	else
 		for i = 1, GetNumRaidMembers(), 1 do
 			if UnitName("Raid"..i.."target") == fleshtentacle then
-				health = UnitHealth("Raid"..i.."target")
+				health = math.floor(UnitHealth("Raid"..i.."target")/UnitHealthMax("Raid"..i.."target")*100)
 				break;
 			end
 		end
