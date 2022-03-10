@@ -370,6 +370,8 @@ BabbleBoss:RegisterTranslations("enUS", function()
 		["Gurubashi Berserker"] = true;
 		["Elder Mottled Boar"] = true,
 		["Gargoyle"] = true,
+		["Alterac Valley"] = true,
+		["Arathi Basin"] = true
 	}
 end)
 

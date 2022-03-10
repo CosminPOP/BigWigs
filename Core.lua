@@ -74,6 +74,10 @@ L:RegisterTranslations("enUS", function() return {
 	["Outdoor Raid Bosses"] = "Outdoor",
 	["Outdoor Raid Bosses Zone"] = "Outdoor Raid Bosses", -- DO NOT EVER TRANSLATE untill I find a more elegant option
 
+	["Battlegrounds"] = true,
+	["Alterac Valley"] = true,
+	["Arathi Basin"] = true,
+
 	--Name for exception bosses (neutrals that enable modules)
 	["Vaelastrasz the Corrupt"] = true,
 	["Lord Victor Nefarius"] = true,

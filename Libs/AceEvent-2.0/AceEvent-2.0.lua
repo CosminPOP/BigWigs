@@ -109,7 +109,6 @@ function AceEvent:RegisterEvent(event, method, once)
 		method = event
 	end
 	if type(method) == "string" and type(self[method]) ~= "function" then
-		DEFAULT_CHAT_FRAME:AddMessage("Cannot register event "..event.." to method "..method..", it does not exist")
 		AceEvent:error("Cannot register event %q to method %q, it does not exist", event, method)
 	else
 		assert(type(method) == "function" or type(method) == "string")

@@ -173,6 +173,7 @@ BabbleZone:RegisterTranslations("enUS", function()
 		["Karazhan"] = true,
 		["Caverns of Time"] = true,
 		["Zul'Aman"] = true,
+		["Battlegrounds"] = true,
 	}
 end)
 

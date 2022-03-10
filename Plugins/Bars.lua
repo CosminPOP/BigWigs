@@ -589,9 +589,10 @@ function BigWigsBars:BigWigs_StartBar(module, text, time, icon, otherc, c1, c2, 
         local exists, t, elapsed, running, paused = self:CandyBarStatus(i)
         if exists then
             if IsShiftKeyDown() then
-                SendChatMessage(text .. " in " .. math.floor(t - elapsed) .. "s", "RAID_WARNING");
+                SendChatMessage(text .. " in " .. SecondsToTime(math.floor(t - elapsed)), "RAID_WARNING");
             else
-                SendChatMessage(text .. " in " .. math.floor(t - elapsed) .. "s", "RAID");
+                SendChatMessage(text .. " in " .. SecondsToTime(math.floor(t - elapsed)), "RAID");
+                SendChatMessage(text .. " in " .. SecondsToTime(math.floor(t - elapsed)), "BATTLEGROUND");
             end
         end
     end

@@ -247,7 +247,7 @@ end
 function BigWigsFrostBlast:TestFBFrame()
 	if not anchor then self:SetupFrames() end
 	anchor:Show()
-	for i=1,4 do
+	for i=1,5 do
 		anchor.bar[i].unit="player"
 		anchor.bar[i].status:SetScript("OnUpdate", self.OnUpdate)
 		anchor.bar[i]:Show()
@@ -293,7 +293,7 @@ function BigWigsFrostBlast:FrostBlastUpdate()
 	if not BigWigsFrostBlast.db.profile.disabled then
 		if not anchor then self:SetupFrames() anchor:Show() end
 		local numEntries = getn(FrostblastTargets)
-		for i=1,4 do
+		for i=1,5 do
 			if i<=numEntries then
 				anchor.bar[i].unit=FrostblastTargets[i];
 				anchor.bar[i].status:SetScript("OnUpdate", self.OnUpdate)
@@ -309,7 +309,7 @@ end
 
 function BigWigsFrostBlast:StopFrostBlastUpdate()
 	if anchor then
-		for i=1,4 do
+		for i=1,5 do
 			anchor.bar[i].unit=nil;
 			anchor.bar[i].status:SetScript("OnUpdate", nil)
 			anchor.bar[i]:Hide()
@@ -399,7 +399,7 @@ function BigWigsFrostBlast:SetupFrames()
 
 	--Bar1
 	frame.bar = {}
-	for i=1, 4 do
+	for i=1, 5 do
 		local bar = CreateFrame("Button", "FBTargetBar_"..i, UIParent)
 		bar:ClearAllPoints()
 		if i==1 then

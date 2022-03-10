@@ -166,3 +166,6 @@ Raids\Naxxramas\Loatheb.lua
 Raids\Naxxramas\Horsemen.lua
 Raids\Naxxramas\Sapphiron.lua
 Raids\Naxxramas\Kelthuzad.lua
+
+Battlegrounds\AlteracValley.lua
+Battlegrounds\ArathiBasin.lua
