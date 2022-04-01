@@ -588,6 +588,11 @@ function BigWigsBars:BigWigs_StartBar(module, text, time, icon, otherc, c1, c2, 
     local function OnBarClick(i)
         local exists, t, elapsed, running, paused = self:CandyBarStatus(i)
         if exists then
+            if arg1 == "RightButton" then
+                BigWigsBars:BigWigs_StopBar(module, text)
+                return
+            end
+
             if IsShiftKeyDown() then
                 SendChatMessage(text .. " in " .. SecondsToTime(math.floor(t - elapsed)), "RAID_WARNING");
             else
